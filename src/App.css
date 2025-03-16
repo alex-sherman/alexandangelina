@@ -21,7 +21,9 @@ h1 {
   left: 0;
   width: 100vw;
   text-align: center;
-  @media (max-width: 750px) {
+}
+@media (max-width: 750px) {
+  h1 {
     top: 8vh;
     margin-top: -11vmin;
     font-size: 11vmin;
@@ -41,7 +43,9 @@ h2 {
   left: 0;
   width: 100vw;
   text-align: center;
-  @media (max-width: 750px) {
+}
+@media (max-width: 750px) {
+  h2 {
     top: 10vh;
     margin-top: 0;
     font-size: 5vmin;
