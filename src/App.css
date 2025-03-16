@@ -18,10 +18,14 @@ h1 {
   z-index: 11;
   top: 50vh;
   margin-top: -35vmin;
-  width: 60vmin;
-  left: 50vw;
-  margin-left: -30vmin;
+  left: 0;
+  width: 100vw;
   text-align: center;
+  @media (max-width: 750px) {
+    top: 8vh;
+    margin-top: -11vmin;
+    font-size: 11vmin;
+  }
 }
 
 h2 {
@@ -34,10 +38,14 @@ h2 {
   z-index: 11;
   top: 50vh;
   margin-top: -23vmin;
-  width: 60vmin;
-  left: 50vw;
-  margin-left: -30vmin;
+  left: 0;
+  width: 100vw;
   text-align: center;
+  @media (max-width: 750px) {
+    top: 10vh;
+    margin-top: 0;
+    font-size: 5vmin;
+  }
 }
 
 img {
