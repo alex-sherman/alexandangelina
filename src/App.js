@@ -46,7 +46,7 @@ function App() {
       </div>
       <div className="scroll-snap">
         <Section>
-          <img src={us} alt="Logo" />
+          <img src={us} alt="Logo"/>
           <h1>Alex & Angelina</h1>
           <h2>AUGUST 23 | MADISON</h2>
           <a href="https://alexandangelina.rsvpify.com">RSVP</a>

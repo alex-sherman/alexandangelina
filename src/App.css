@@ -46,7 +46,7 @@ img {
   opacity: 1;
   z-index: 10;
   position: absolute;
-  top: 50vh;
+  top: 50%;
   width: 60vmin;
   height: 80vh;
   left: 50vw;
@@ -91,7 +91,7 @@ p {
   font-weight: bold;
   z-index: 10;
   position: absolute;
-  top: 50vh;
+  top: 50%;
   width: 50vmin;
   height: 60vh;
   left: 50vw;
