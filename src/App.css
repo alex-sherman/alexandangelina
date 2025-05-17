@@ -116,13 +116,13 @@ p {
     font-size: 4vw;
   }
   a {
-    font-size: 70px;
-    width: 200px;
-    margin-left: -103px;
-    padding-top: 5px;
-    height: 85px;
+    font-size: 35px;
+    width: 120px;
+    margin-left: -63px;
+    padding-top: 2.5px;
+    height: 42.5px;
     border-radius: 10px;
-    border-width: 3px;
+    border-width: 2px;
   }
   img {
     margin-left: -40vmin;
