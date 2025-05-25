@@ -23,10 +23,21 @@ function Section({ children, container }) {
   );
 }
 
+function Info({ children, title }) {
+  return (
+    <>
+      <div>
+        <b>{title + ":"}&nbsp;</b>
+      </div>
+      <div>{React.Children.map(children, (child) => child)}</div>
+    </>
+  );
+}
+
 function App() {
   return (
     <>
-    <script type="text/javascript" src="https://alexandangelina.rsvpify.com/embed"></script>
+      <script type="text/javascript" src="https://alexandangelina.rsvpify.com/embed"></script>
       <div className="page">
         <svg className="bg" preserveAspectRatio="xMinYMin slice" id="visual" viewBox="0 0 960 540">
           <rect x="0" y="0" width="960" height="540" fill="#FCEAE2"></rect>
@@ -46,10 +57,59 @@ function App() {
       </div>
       <div className="scroll-snap">
         <Section>
-          <img src={us} alt="Logo"/>
+          <img src={us} alt="Logo" />
           <h1>Alex & Angelina</h1>
           <h2>AUGUST 23 | MADISON</h2>
           <a href="https://alexandangelina.rsvpify.com">RSVP</a>
+        </Section>
+        <Section>
+          <div className="card-container">
+            <div className="card">
+              <div className="info-table">
+                <Info title="When">August 23, 2025 4:00PM</Info>
+                <Info title="Where">
+                  <div>
+                    Alex and Angelina's house/front yard
+                    <br />
+                    1014 Emerald Street
+                    <br />
+                    Madison, WI 53715
+                  </div>
+                </Info>
+                <Info title="Attire">
+                  Anything from comfortable dress clothes and summer dresses to suits and gowns.
+                </Info>
+                <Info title="Schedule">
+                  <b>Event week (August 18-22)</b>
+                  <ul>
+                    <li>
+                      Come to Madison any time! <br />
+                      We will be using this week to spend quality time with friends & family (you)!
+                      <br />
+                      Some fun activities TBD.
+                    </li>
+                  </ul>
+                  <b>Reception (August 23)</b>
+                  <ul>
+                    <li>4:00 - Cocktail hour</li>
+                    <li>5:00 - Dinner</li>
+                    <li>6:30 - Cake, speeches</li>
+                    <li>7:00 - Party and dance!</li>
+                    <li>10:00 - After party</li>
+                  </ul>
+                  <b>Morning after (August 24)</b>
+                  <ul>
+                    <li>Brunch, details TBD.</li>
+                  </ul>
+                </Info>
+                <Info title="Weather">
+                  The party will be in our yard with a tent. In the case of extreme weather
+                  (tornado, etc.) we will pile into the house. Yes it will be squished, but we'll
+                  make it work!
+                </Info>
+              </div>
+            </div>
+          </div>
         </Section>
       </div>
     </>

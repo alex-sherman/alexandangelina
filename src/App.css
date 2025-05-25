@@ -46,12 +46,12 @@ img {
   opacity: 1;
   z-index: 10;
   position: absolute;
-  top: 50%;
+  top: 50vh;
   width: 60vmin;
-  height: 80vh;
+  height: 90%;
   left: 50vw;
   margin-left: -30vmin;
-  margin-top: -40vh;
+  margin-top: -45vh;
   object-fit: cover;
   object-position: 44% 50%;
   border-radius: 10vmin;
@@ -82,29 +82,43 @@ a {
   background-color: #335d53;
   border-color: #407569;
 }
-
-p {
+.card-container {
+  display:flex;
+  position: absolute;
+  width: 100vw;
+  height:100%;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  align-self: center;
+  display: flex;
   transition: opacity 0.3s;
   opacity: 1;
+  width: 80vw;
   font-family: "Tenor Sans", sans-serif;
-  font-size: 3vh;
-  font-weight: bold;
-  z-index: 10;
-  position: absolute;
-  top: 50%;
-  width: 50vmin;
-  height: 60vh;
-  left: 50vw;
-  margin-left: -30vmin;
-  margin-top: -40vh;
-  padding-top: 20vh;
-  padding-left: 5vmin;
-  padding-right: 5vmin;
-  object-fit: cover;
-  object-position: 44% 50%;
+    font-size: 2.5vmin;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
   border-radius: 10vmin;
   background-color: #fceae2;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.info-table {
+  align-self: center;
+  display: grid;
+  grid-template-columns: min-content auto;
+  row-gap: 1em;
+}
+.info-table ul {
+  margin-top: 0;
+  padding-left: 2vmin;
+}
+li::marker {
 }
 
 @media (max-width: 1000px) {
@@ -127,12 +141,9 @@ p {
   img {
     margin-left: -40vmin;
     width: 80vmin;
-    margin-top: -40vh;
   }
-  p {
-    margin-left: -40vmin;
+  .card {
     width: 70vmin;
-    margin-top: -40vh;
   }
 }
 
