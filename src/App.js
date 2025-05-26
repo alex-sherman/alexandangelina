@@ -1,23 +1,15 @@
 import "./App.css";
 import "./scroll.css";
 import us from "./images/us2.jpg";
+import scrollDown from "./images/down_arrow.svg";
 import { useScroll } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useRef, useState} from "react";
 
-function Section({ children, container }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    layoutEffect: false,
-    target: ref,
-    container: container,
-    offset: [".5 end", ".500001 end"],
-  });
-  const [hookedYPostion, setHookedYPosition] = React.useState(scrollYProgress.get());
-  scrollYProgress.onChange((v) => setHookedYPosition(v));
+function Section({ children }) {
   return (
-    <section ref={ref}>
+    <section>
       {React.Children.map(children, (child) =>
-        React.cloneElement(child, { scrollYProgress: hookedYPostion })
+        React.cloneElement(child)
       )}
     </section>
   );
@@ -35,6 +27,14 @@ function Info({ children, title }) {
 }
 
 function App() {
+  const [showScroll, setShowScroll] = useState(true);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    layoutEffect: false,
+    container: ref,
+  });
+  scrollYProgress.on("change", () => setShowScroll(false));
+  
   return (
     <>
       <script type="text/javascript" src="https://alexandangelina.rsvpify.com/embed"></script>
@@ -55,7 +55,8 @@ function App() {
           ></path>
         </svg>
       </div>
-      <div className="scroll-snap">
+      {showScroll && <img src={scrollDown} className="scroll-down"/>}
+      <div className="scroll-snap" ref={ref}>
         <Section>
           <img src={us} alt="Logo" />
           <h1>Alex & Angelina</h1>
@@ -110,6 +111,7 @@ function App() {
               </div>
             </div>
           </div>
+
         </Section>
       </div>
     </>

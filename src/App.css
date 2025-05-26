@@ -11,6 +11,33 @@
   height: 100%;
 }
 
+.scroll-down {
+  z-index: 12;
+  width: 10vmin;
+  margin-left: -5vmin;
+  left: 50vw;
+  height: 10vmin;
+  bottom: 10vmin;
+  position: absolute;
+  animation: fade-in-down 1.5s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
 h1 {
   position: absolute;
   font-family: "cursive";
@@ -41,7 +68,7 @@ h2 {
   text-align: center;
 }
 
-img {
+section img {
   transition: opacity 0.3s;
   opacity: 1;
   z-index: 10;
@@ -53,7 +80,7 @@ img {
   margin-left: -30vmin;
   margin-top: -45vh;
   object-fit: cover;
-  object-position: 44% 50%;
+  object-position: 39% 50%;
   border-radius: 10vmin;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   overflow-clip-margin: unset;
@@ -83,10 +110,10 @@ a {
   border-color: #407569;
 }
 .card-container {
-  display:flex;
+  display: flex;
   position: absolute;
   width: 100vw;
-  height:100%;
+  height: 100%;
   z-index: 10;
   justify-content: center;
   align-items: center;
@@ -97,8 +124,9 @@ a {
   transition: opacity 0.3s;
   opacity: 1;
   width: 80vw;
+  max-width: 1000px;
   font-family: "Tenor Sans", sans-serif;
-    font-size: 2.5vmin;
+  font-size: 2.5vmin;
   padding-left: 5vw;
   padding-right: 5vw;
   padding-top: 5vh;
@@ -116,9 +144,17 @@ a {
 }
 .info-table ul {
   margin-top: 0;
-  padding-left: 2vmin;
+  padding-left: 0vmin;
+  list-style: none;
 }
-li::marker {
+li {
+  margin: 0;
+  list-style: none;
+  padding-left: 3.5vmin;
+  background-image: url("images/honey.svg");
+  background-repeat: no-repeat;
+  background-position: left 0.2vmin;
+  background-size: 2.5vmin;
 }
 
 @media (max-width: 1000px) {
@@ -138,12 +174,14 @@ li::marker {
     border-radius: 10px;
     border-width: 2px;
   }
-  img {
+  .scroll-down {
+    width: 80px;
+    margin-left: -40px;
+    height: 80px;
+  }
+  section img {
     margin-left: -40vmin;
     width: 80vmin;
-  }
-  .card {
-    width: 70vmin;
   }
 }
 
