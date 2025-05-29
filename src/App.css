@@ -156,10 +156,13 @@ li {
 }
 
 .info > a {
-  color: #FFB627;
+  color: #ffb627;
 }
 
 @media (max-width: 1000px) {
+  .card {
+    font-size: min(2vh, 3vmin);
+  }
   h1 {
     font-size: 8vmin;
     margin-top: -8vmin;
