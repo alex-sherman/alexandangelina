@@ -20,7 +20,6 @@
   bottom: 10vh;
   position: absolute;
   animation: fade-in-down 1.5s ease infinite;
-  pointer-events: none;
 }
 
 @keyframes fade-in-down {
@@ -86,7 +85,7 @@ section img {
   overflow-clip-margin: unset;
 }
 
-a {
+a.rsvp {
   border: 5px;
   position: absolute;
   bottom: 25vh;
@@ -125,7 +124,7 @@ a {
   width: 80vw;
   max-width: 1000px;
   font-family: "Tenor Sans", sans-serif;
-  font-size: 2.5vmin;
+  font-size: 2.2vmin;
   padding-left: 5vw;
   padding-right: 5vw;
   padding-top: 5vh;
@@ -139,7 +138,7 @@ a {
   align-self: center;
   display: grid;
   grid-template-columns: min-content auto;
-  row-gap: 1em;
+  row-gap: 0.5em;
 }
 .info-table ul {
   margin-top: 0;
@@ -156,6 +155,10 @@ li {
   background-size: 2.5vmin;
 }
 
+.info > a {
+  color: #FFB627;
+}
+
 @media (max-width: 1000px) {
   h1 {
     font-size: 8vmin;
@@ -164,7 +167,7 @@ li {
   h2 {
     font-size: 4vmin;
   }
-  a {
+  a.rsvp {
     font-size: 35px;
     width: 120px;
     margin-left: -63px;

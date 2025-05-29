@@ -3,14 +3,12 @@ import "./scroll.css";
 import us from "./images/us2.jpg";
 import scrollDown from "./images/down_arrow.svg";
 import { useScroll } from "framer-motion";
-import React, { useRef, useState} from "react";
+import React, { use, useRef, useState } from "react";
 
-function Section({ children }) {
+function Section({ children, ...props }) {
   return (
-    <section>
-      {React.Children.map(children, (child) =>
-        React.cloneElement(child)
-      )}
+    <section {...props}>
+      {React.Children.map(children, (child) => React.cloneElement(child))}
     </section>
   );
 }
@@ -21,7 +19,7 @@ function Info({ children, title }) {
       <div>
         <b>{title + ":"}&nbsp;</b>
       </div>
-      <div>{React.Children.map(children, (child) => child)}</div>
+      <div className="info">{React.Children.map(children, (child) => child)}</div>
     </>
   );
 }
@@ -29,12 +27,12 @@ function Info({ children, title }) {
 function App() {
   const [showScroll, setShowScroll] = useState(true);
   const ref = useRef(null);
+  const scrollTarget = useRef(null);
   const { scrollYProgress } = useScroll({
     layoutEffect: false,
     container: ref,
   });
   scrollYProgress.on("change", () => setShowScroll(false));
-  
   return (
     <>
       <script type="text/javascript" src="https://alexandangelina.rsvpify.com/embed"></script>
@@ -55,22 +53,34 @@ function App() {
           ></path>
         </svg>
       </div>
-      {showScroll && <img src={scrollDown} className="scroll-down"/>}
+      {showScroll && (
+        <img
+          src={scrollDown}
+          className="scroll-down"
+          onClick={() => scrollTarget.current.scrollIntoView({ behavior: "smooth" })}
+        />
+      )}
       <div className="scroll-snap" ref={ref}>
         <Section>
           <img src={us} alt="Logo" />
           <h1>Alex & Angelina</h1>
           <h2>AUGUST 23 | MADISON</h2>
-          <a href="https://alexandangelina.rsvpify.com">RSVP</a>
+          <a className="rsvp" href="https://alexandangelina.rsvpify.com">
+            RSVP
+          </a>
         </Section>
-        <Section>
+        <Section ref={scrollTarget}>
           <div className="card-container">
             <div className="card">
               <div className="info-table">
-                <Info title="When">August 23, 2025 4:00PM</Info>
+                <Info title="What">
+                  A reception party to celebrate our wedding. We will be getting married in a
+                  private ceremony with immediate family the week before.
+                </Info>
+                <Info title="When">August 23, 2025</Info>
                 <Info title="Where">
                   <div>
-                    Alex and Angelina's house/front yard
+                    Alex and Angelina's house
                     <br />
                     1014 Emerald Street
                     <br />
@@ -84,10 +94,8 @@ function App() {
                   <b>Event week (August 18-22)</b>
                   <ul>
                     <li>
-                      Come to Madison any time! <br />
-                      We will be using this week to spend quality time with friends & family (you)!
-                      <br />
-                      Some fun activities TBD.
+                      Come to Madison any time! We will be using this week to spend quality time
+                      with friends & family. Some fun activities TBD.
                     </li>
                   </ul>
                   <b>Reception (August 23)</b>
@@ -103,16 +111,31 @@ function App() {
                     <li>Brunch, details TBD.</li>
                   </ul>
                 </Info>
-                <Info title="Weather">
-                  The party will be in our yard with a tent. In the case of extreme weather
-                  (tornado, etc.) we will pile into the house. Yes it will be squished, but we'll
-                  make it work!
+                <Info title="Setting">
+                  The party will be in our yard with a tent. In the case of bad weather we will pile
+                  into the house.
+                </Info>
+                <Info title="Playlist">
+                  Help us make our playlists!&nbsp;
+                  <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1Yw6_OIBe5otdBnDgdhCNiSXdpSDnouoQyU8bfwSuKxM/edit?usp=sharing">Add your songs here.</a>
+                </Info>
+                <Info title="Photos">
+                  Help us make our photo album! Add some of your favorite memories with us (we're
+                  thinking of using these for a collage).&nbsp;
+                  <a target="_blank" rel="noopener noreferrer" href="https://photos.app.goo.gl/ptkk3p8nCT3mFGfR9">Add your photos here.</a>
                 </Info>
               </div>
             </div>
           </div>
-
         </Section>
+        {/* <Section ref={scrollTarget}>
+          <div className="card-container">
+            <div className="card">
+              <div className="info-table"></div>
+                <Info title="When">August 23, 2025</Info>
+            </div>
+          </div>
+        </Section> */}
       </div>
     </>
   );
