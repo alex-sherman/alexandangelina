@@ -128,14 +128,6 @@ function App() {
             </div>
           </div>
         </Section>
-        {/* <Section ref={scrollTarget}>
-          <div className="card-container">
-            <div className="card">
-              <div className="info-table"></div>
-                <Info title="When">August 23, 2025</Info>
-            </div>
-          </div>
-        </Section> */}
       </div>
     </>
   );
