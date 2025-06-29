@@ -31,20 +31,22 @@ function Registry() {
     <div className="card-container">
       <div className="card small">
         <p style={{ textDecoration: "underline" }}>
-          We don’t want anybody to feel obliged to get us wedding gifts, and getting to celebrate
-          with our friends and family is more than enough. For gift-givers who want ideas for things
-          we will certainly love, we made this secret registry to help out!
+          <i>
+            We don't want anybody to feel obliged to get us wedding gifts. For gift-givers who want
+            ideas for things we will certainly love, we made this secret registry to help out.
+          </i>
         </p>
-        <ul>
-          <li>
-            Any trees, bushes, or flowers from McKay nursery. We will plant these in our yard. If
-            you want to make certain that the plant lives with us for a long time, McKay offers a
-            warranty for some of their plants, and they can deliver to our doorstep.
-          </li>
-          <li>
-            We would love any gifts that will let us experience something fun, learn something
-            useful, or try something new as a couple. Feel free to surprise us! Here are a few
-            ideas:
+        <div className="info-table">
+          <Info title="Plants">
+            Any trees, bushes, or flowers from{" "}
+            <a href="https://www.mckaynursery.com/?srsltid=AfmBOopgUH2S4Pwjv1J6ZvzFOiNsvBAmCEe2FRj0Tw0z6Mtf45J9BHbV">
+              McKay Nursery
+            </a>{" "}
+            to fill up our yard.
+          </Info>
+          <Info title="Experiences">
+            We would love any gifts that will let us try something new as a couple. Feel free to
+            surprise us! Here are a few ideas:
             <ul>
               <li>
                 <a href="https://salsamadison.net/register/p/gift">Salsa/bachata lessons</a>
@@ -59,35 +61,36 @@ function Registry() {
                   Credits for events at Overture Center
                 </a>
               </li>
-              <li>
-                <a href="https://www.rei.com/">Anything (really anything) from REI.</a> We somehow
-                can never seem to have enough outdoor equipment
-              </li>
             </ul>
-          </li>
-        </ul>
+          </Info>
+          <Info title="Outdoors">
+            Anything (really anything) <a href="https://www.rei.com/">from REI.</a>
+          </Info>
+        </div>
 
-        <p style={{ textDecoration: "underline" }}>If you would like to give us money as a gift…</p>
-        <ul>
-          <li>
-            Tell us to put it towards improvements on our house, and also send us a copy of one of
-            your favorite recipes. The best way we can improve our home is with more great food!
-            We’ll save what you send us into a wedding recipe book.
-          </li>
-          <li>
-            Tell us to put it towards our honeymoon, and send us an idea for a place to add to our
-            travel bucket list. (Angelina takes her bucket lists seriously!)
-          </li>
-          <li>
+        <p style={{ textDecoration: "underline" }}>
+          <i>If you would like to give us money as a gift…</i>
+        </p>
+        <p>
+          <b>Tell us to put it towards improvements on our house:</b> and also send us a copy of one
+          of your favorite recipes. The best way we can improve our home is with more great food!
+          We'll save what you send us into a wedding recipe book.
+        </p>
+        <p>
+          <b>Tell us to put it towards our honeymoon:</b> and send us an idea for a place to add to
+          our travel bucket list. (Angelina takes her bucket lists seriously!)
+        </p>
+        <p>
+          <b>
             Instead of giving us a gift, we would love for people to donate to the UW Madison
-            Arboretum. The Arboretum is a large nature preserve in downtown Madison and a space
-            where we spend many hours walking, kayaking, cross country skiing, and riding bikes.
-            Having such a beautiful wilderness area in the middle of a city adds an incredible
-            amount to our everyday lives. The Arboretum is supported primarily by donations from the
-            community. Just let us know that you did this, and go enjoy a beautiful walk out there!{" "}
-            <a href="https://arboretum.wisc.edu/get-involved/donate/">Donate here.</a>
-          </li>
-        </ul>
+            Arboretum:
+          </b> the Arboretum is a large nature preserve in downtown Madison and a space where we spend
+          many hours walking, kayaking, cross country skiing, and riding bikes. Having such a
+          beautiful wilderness area in the middle of a city adds an incredible amount to our
+          everyday lives. The Arboretum is supported primarily by donations from the community. Just
+          let us know that you did this, and go enjoy a beautiful walk out there!{" "}
+          <a href="https://arboretum.wisc.edu/get-involved/donate/">Donate here.</a>
+        </p>
       </div>
     </div>
   );
@@ -104,7 +107,7 @@ function App() {
   });
   let flip = (event) => {
     clicks += 1;
-    if (clicks == 3) {
+    if (clicks == 2) {
       setReversed(!reversed);
       clicks = 0;
     }
@@ -225,9 +228,6 @@ function App() {
                   >
                     Add your photos here.
                   </a>
-                </Info>
-                <Info title="Registry">
-                  <a href="/registry">Click</a>
                 </Info>
               </div>
             </div>
