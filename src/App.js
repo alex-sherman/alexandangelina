@@ -3,7 +3,7 @@ import "./scroll.css";
 import us from "./images/us2.jpg";
 import scrollDown from "./images/down_arrow.svg";
 import { useScroll } from "framer-motion";
-import React, { use, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Section({ children, ...props }) {
   return (
@@ -23,15 +23,96 @@ function Info({ children, title }) {
     </>
   );
 }
+let clicks = 0;
+let timeout = 0;
+
+function Registry() {
+  return (
+    <div className="card-container">
+      <div className="card small">
+        <p style={{ textDecoration: "underline" }}>
+          We don’t want anybody to feel obliged to get us wedding gifts, and getting to celebrate
+          with our friends and family is more than enough. For gift-givers who want ideas for things
+          we will certainly love, we made this secret registry to help out!
+        </p>
+        <ul>
+          <li>
+            Any trees, bushes, or flowers from McKay nursery. We will plant these in our yard. If
+            you want to make certain that the plant lives with us for a long time, McKay offers a
+            warranty for some of their plants, and they can deliver to our doorstep.
+          </li>
+          <li>
+            We would love any gifts that will let us experience something fun, learn something
+            useful, or try something new as a couple. Feel free to surprise us! Here are a few
+            ideas:
+            <ul>
+              <li>
+                <a href="https://salsamadison.net/register/p/gift">Salsa/bachata lessons</a>
+              </li>
+              <li>
+                <a href="https://www.surlatable.com/cooking-classes/">
+                  Cooking classes at Sur La Table
+                </a>
+              </li>
+              <li>
+                <a href="https://www.overture.org/tickets-events/gift-certificates">
+                  Credits for events at Overture Center
+                </a>
+              </li>
+              <li>
+                <a href="https://www.rei.com/">Anything (really anything) from REI.</a> We somehow
+                can never seem to have enough outdoor equipment
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <p style={{ textDecoration: "underline" }}>If you would like to give us money as a gift…</p>
+        <ul>
+          <li>
+            Tell us to put it towards improvements on our house, and also send us a copy of one of
+            your favorite recipes. The best way we can improve our home is with more great food!
+            We’ll save what you send us into a wedding recipe book.
+          </li>
+          <li>
+            Tell us to put it towards our honeymoon, and send us an idea for a place to add to our
+            travel bucket list. (Angelina takes her bucket lists seriously!)
+          </li>
+          <li>
+            Instead of giving us a gift, we would love for people to donate to the UW Madison
+            Arboretum. The Arboretum is a large nature preserve in downtown Madison and a space
+            where we spend many hours walking, kayaking, cross country skiing, and riding bikes.
+            Having such a beautiful wilderness area in the middle of a city adds an incredible
+            amount to our everyday lives. The Arboretum is supported primarily by donations from the
+            community. Just let us know that you did this, and go enjoy a beautiful walk out there!{" "}
+            <a href="https://arboretum.wisc.edu/get-involved/donate/">Donate here.</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const [showScroll, setShowScroll] = useState(true);
+  const [reversed, setReversed] = useState(false);
   const ref = useRef(null);
   const scrollTarget = useRef(null);
   const { scrollYProgress } = useScroll({
     layoutEffect: false,
     container: ref,
   });
+  let flip = (event) => {
+    clicks += 1;
+    if (clicks == 3) {
+      setReversed(!reversed);
+      clicks = 0;
+    }
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      clicks = 0;
+    }, 200);
+  };
   scrollYProgress.on("change", () => setShowScroll(false));
   return (
     <>
@@ -62,12 +143,21 @@ function App() {
       )}
       <div className="scroll-snap" ref={ref}>
         <Section>
-          <img src={us} alt="Logo" />
-          <h1>Alex & Angelina</h1>
-          <h2>AUGUST 23 | MADISON</h2>
-          <a className="rsvp" href="https://alexandangelina.rsvpify.com">
-            RSVP
-          </a>
+          <div className={"flip" + (reversed ? " reverse" : "")} onClick={flip}>
+            <div className="flip-inner">
+              <div className="front">
+                <img src={us} alt="Logo" />
+                <h1>Alex & Angelina</h1>
+                <h2>AUGUST 23 | MADISON</h2>
+                <a className="rsvp" href="https://alexandangelina.rsvpify.com">
+                  RSVP
+                </a>
+              </div>
+              <div className="back">
+                <Registry />
+              </div>
+            </div>
+          </div>
         </Section>
         <Section ref={scrollTarget}>
           <div className="card-container">
@@ -117,12 +207,27 @@ function App() {
                 </Info>
                 <Info title="Playlist">
                   Help us make our playlists!&nbsp;
-                  <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1Yw6_OIBe5otdBnDgdhCNiSXdpSDnouoQyU8bfwSuKxM/edit?usp=sharing">Add your songs here.</a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://docs.google.com/spreadsheets/d/1Yw6_OIBe5otdBnDgdhCNiSXdpSDnouoQyU8bfwSuKxM/edit?usp=sharing"
+                  >
+                    Add your songs here.
+                  </a>
                 </Info>
                 <Info title="Photos">
                   Help us make our photo album! Add some of your favorite memories with us (we're
                   thinking of using these for a collage).&nbsp;
-                  <a target="_blank" rel="noopener noreferrer" href="https://photos.app.goo.gl/ptkk3p8nCT3mFGfR9">Add your photos here.</a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://photos.app.goo.gl/ptkk3p8nCT3mFGfR9"
+                  >
+                    Add your photos here.
+                  </a>
+                </Info>
+                <Info title="Registry">
+                  <a href="/registry">Click</a>
                 </Info>
               </div>
             </div>
