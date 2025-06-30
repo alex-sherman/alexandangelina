@@ -174,7 +174,7 @@ li {
     font-size: min(2vh, 3vmin);
   }
   .card.small {
-    font-size: min(1.5vh, 2vmin);
+    font-size: min(1.5vh, 2.8vw);
   }
   h1 {
     font-size: 8vmin;
