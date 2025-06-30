@@ -15,9 +15,9 @@
   z-index: 12;
   width: 10vh;
   margin-left: -5vh;
-  left: 50vw;
+  left: 50%;
   height: 10vh;
-  bottom: 10vh;
+  bottom: 2vh;
   position: absolute;
   animation: fade-in-down 1.5s ease infinite;
 }
@@ -80,7 +80,7 @@ section .flip {
   overflow-clip-margin: unset;
 }
 
-section img {
+section img.us {
   width: 100%;
   height: 100%;
   object-fit: cover;

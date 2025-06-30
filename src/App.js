@@ -26,6 +26,14 @@ function Info({ children, title }) {
 let clicks = 0;
 let timeout = 0;
 
+function ANT({ children, href }) {
+  return (
+    <a target="_blank" rel="noopener noreferrer" href={href}>
+      {React.Children.map(children, (child) => child)}
+    </a>
+  );
+}
+
 function Registry() {
   return (
     <div className="card-container">
@@ -39,9 +47,9 @@ function Registry() {
         <div className="info-table">
           <Info title="Plants">
             Any trees, bushes, or flowers from{" "}
-            <a href="https://www.mckaynursery.com/?srsltid=AfmBOopgUH2S4Pwjv1J6ZvzFOiNsvBAmCEe2FRj0Tw0z6Mtf45J9BHbV">
+            <ANT href="https://www.mckaynursery.com/?srsltid=AfmBOopgUH2S4Pwjv1J6ZvzFOiNsvBAmCEe2FRj0Tw0z6Mtf45J9BHbV">
               McKay Nursery
-            </a>{" "}
+            </ANT>{" "}
             to fill up our yard.
           </Info>
           <Info title="Experiences">
@@ -49,22 +57,22 @@ function Registry() {
             surprise us! Here are a few ideas:
             <ul>
               <li>
-                <a href="https://salsamadison.net/register/p/gift">Salsa/bachata lessons</a>
+                <ANT href="https://salsamadison.net/register/p/gift">Salsa/bachata lessons</ANT>
               </li>
               <li>
-                <a href="https://www.surlatable.com/cooking-classes/">
+                <ANT href="https://www.surlatable.com/cooking-classes/">
                   Cooking classes at Sur La Table
-                </a>
+                </ANT>
               </li>
               <li>
-                <a href="https://www.overture.org/tickets-events/gift-certificates">
+                <ANT href="https://www.overture.org/tickets-events/gift-certificates">
                   Credits for events at Overture Center
-                </a>
+                </ANT>
               </li>
             </ul>
           </Info>
           <Info title="Outdoors">
-            Anything (really anything) <a href="https://www.rei.com/">from REI.</a>
+            Anything (really anything) <ANT href="https://www.rei.com/">from REI.</ANT>
           </Info>
         </div>
 
@@ -84,12 +92,13 @@ function Registry() {
           <b>
             Instead of giving us a gift, we would love for people to donate to the UW Madison
             Arboretum:
-          </b> the Arboretum is a large nature preserve in downtown Madison and a space where we spend
+          </b>{" "}
+          the Arboretum is a large nature preserve in downtown Madison and a space where we spend
           many hours walking, kayaking, cross country skiing, and riding bikes. Having such a
           beautiful wilderness area in the middle of a city adds an incredible amount to our
           everyday lives. The Arboretum is supported primarily by donations from the community. Just
           let us know that you did this, and go enjoy a beautiful walk out there!{" "}
-          <a href="https://arboretum.wisc.edu/get-involved/donate/">Donate here.</a>
+          <ANT href="https://arboretum.wisc.edu/get-involved/donate/">Donate here.</ANT>
         </p>
       </div>
     </div>
@@ -105,6 +114,16 @@ function App() {
     layoutEffect: false,
     container: ref,
   });
+
+  const onceRef = useRef(null);
+  useEffect(() => {
+    if (onceRef.current) return;
+    onceRef.current = true;
+    if (window.location.pathname === "/registry") {
+      setTimeout(() => setReversed(true), 1000);
+    }
+  });
+
   let flip = (event) => {
     clicks += 1;
     if (clicks == 2) {
@@ -149,7 +168,7 @@ function App() {
           <div className={"flip" + (reversed ? " reverse" : "")} onClick={flip}>
             <div className="flip-inner">
               <div className="front">
-                <img src={us} alt="Logo" />
+                <img src={us} alt="Logo" className="us" />
                 <h1>Alex & Angelina</h1>
                 <h2>AUGUST 23 | MADISON</h2>
                 <a className="rsvp" href="https://alexandangelina.rsvpify.com">
