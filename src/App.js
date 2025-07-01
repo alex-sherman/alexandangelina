@@ -106,7 +106,8 @@ function Registry() {
 }
 
 function App() {
-  const [showScroll, setShowScroll] = useState(true);
+  const only_registry = window.location.search.includes("/registry");
+  const [showScroll, setShowScroll] = useState(!only_registry);
   const [reversed, setReversed] = useState(false);
   const ref = useRef(null);
   const scrollTarget = useRef(null);
@@ -119,7 +120,7 @@ function App() {
   useEffect(() => {
     if (onceRef.current) return;
     onceRef.current = true;
-    if (window.location.search.includes("/registry")) {
+    if (only_registry) {
       setTimeout(() => setReversed(true), 1000);
     }
   });
@@ -170,10 +171,14 @@ function App() {
               <div className="front">
                 <img src={us} alt="Logo" className="us" />
                 <h1>Alex & Angelina</h1>
-                <h2>AUGUST 23 | MADISON</h2>
-                <a className="rsvp" href="https://alexandangelina.rsvpify.com">
-                  RSVP
-                </a>
+                {!only_registry && (
+                  <>
+                    <h2>AUGUST 23 | MADISON</h2>
+                    <a className="rsvp" href="https://alexandangelina.rsvpify.com">
+                      RSVP
+                    </a>
+                  </>
+                )}
               </div>
               <div className="back">
                 <Registry />
@@ -181,77 +186,79 @@ function App() {
             </div>
           </div>
         </Section>
-        <Section ref={scrollTarget}>
-          <div className="card-container">
-            <div className="card">
-              <div className="info-table">
-                <Info title="What">
-                  A reception party to celebrate our wedding. We will be getting married in a
-                  private ceremony with immediate family the week before.
-                </Info>
-                <Info title="When">August 23, 2025</Info>
-                <Info title="Where">
-                  <div>
-                    Alex and Angelina's house
-                    <br />
-                    1014 Emerald Street
-                    <br />
-                    Madison, WI 53715
-                  </div>
-                </Info>
-                <Info title="Attire">
-                  Anything from comfortable dress clothes and summer dresses to suits and gowns.
-                </Info>
-                <Info title="Schedule">
-                  <b>Event week (August 18-22)</b>
-                  <ul>
-                    <li>
-                      Come to Madison any time! We will be using this week to spend quality time
-                      with friends & family. Some fun activities TBD.
-                    </li>
-                  </ul>
-                  <b>Reception (August 23)</b>
-                  <ul>
-                    <li>4:00 - Cocktail hour</li>
-                    <li>5:00 - Dinner</li>
-                    <li>6:30 - Cake, speeches</li>
-                    <li>7:00 - Party and dance!</li>
-                    <li>10:00 - After party</li>
-                  </ul>
-                  <b>Morning after (August 24)</b>
-                  <ul>
-                    <li>Brunch, details TBD.</li>
-                  </ul>
-                </Info>
-                <Info title="Setting">
-                  The party will be in our yard with a tent. In the case of bad weather we will pile
-                  into the house.
-                </Info>
-                <Info title="Playlist">
-                  Help us make our playlists!&nbsp;
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://docs.google.com/spreadsheets/d/1Yw6_OIBe5otdBnDgdhCNiSXdpSDnouoQyU8bfwSuKxM/edit?usp=sharing"
-                  >
-                    Add your songs here.
-                  </a>
-                </Info>
-                <Info title="Photos">
-                  Help us make our photo album! Add some of your favorite memories with us (we're
-                  thinking of using these for a collage).&nbsp;
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://photos.app.goo.gl/ptkk3p8nCT3mFGfR9"
-                  >
-                    Add your photos here.
-                  </a>
-                </Info>
+        {!only_registry && (
+          <Section ref={scrollTarget}>
+            <div className="card-container">
+              <div className="card">
+                <div className="info-table">
+                  <Info title="What">
+                    A reception party to celebrate our wedding. We will be getting married in a
+                    private ceremony with immediate family the week before.
+                  </Info>
+                  <Info title="When">August 23, 2025</Info>
+                  <Info title="Where">
+                    <div>
+                      Alex and Angelina's house
+                      <br />
+                      1014 Emerald Street
+                      <br />
+                      Madison, WI 53715
+                    </div>
+                  </Info>
+                  <Info title="Attire">
+                    Anything from comfortable dress clothes and summer dresses to suits and gowns.
+                  </Info>
+                  <Info title="Schedule">
+                    <b>Event week (August 18-22)</b>
+                    <ul>
+                      <li>
+                        Come to Madison any time! We will be using this week to spend quality time
+                        with friends & family. Some fun activities TBD.
+                      </li>
+                    </ul>
+                    <b>Reception (August 23)</b>
+                    <ul>
+                      <li>4:00 - Cocktail hour</li>
+                      <li>5:00 - Dinner</li>
+                      <li>6:30 - Cake, speeches</li>
+                      <li>7:00 - Party and dance!</li>
+                      <li>10:00 - After party</li>
+                    </ul>
+                    <b>Morning after (August 24)</b>
+                    <ul>
+                      <li>Brunch, details TBD.</li>
+                    </ul>
+                  </Info>
+                  <Info title="Setting">
+                    The party will be in our yard with a tent. In the case of bad weather we will
+                    pile into the house.
+                  </Info>
+                  <Info title="Playlist">
+                    Help us make our playlists!&nbsp;
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://docs.google.com/spreadsheets/d/1Yw6_OIBe5otdBnDgdhCNiSXdpSDnouoQyU8bfwSuKxM/edit?usp=sharing"
+                    >
+                      Add your songs here.
+                    </a>
+                  </Info>
+                  <Info title="Photos">
+                    Help us make our photo album! Add some of your favorite memories with us (we're
+                    thinking of using these for a collage).&nbsp;
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://photos.app.goo.gl/ptkk3p8nCT3mFGfR9"
+                    >
+                      Add your photos here.
+                    </a>
+                  </Info>
+                </div>
               </div>
             </div>
-          </div>
-        </Section>
+          </Section>
+        )}
       </div>
     </>
   );
