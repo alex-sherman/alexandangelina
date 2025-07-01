@@ -119,7 +119,7 @@ function App() {
   useEffect(() => {
     if (onceRef.current) return;
     onceRef.current = true;
-    if (window.location.pathname === "/registry") {
+    if (window.location.search.includes("/registry")) {
       setTimeout(() => setReversed(true), 1000);
     }
   });
