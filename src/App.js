@@ -74,6 +74,9 @@ function Registry() {
           <Info title="Outdoors">
             Anything (really anything) <ANT href="https://www.rei.com/">from REI.</ANT>
           </Info>
+          <Info title="Records">
+            We recently got a record player and want to fill out our collection.
+          </Info>
         </div>
 
         <p style={{ textDecoration: "underline" }}>
